@@ -7,6 +7,9 @@ type cases = [
   Expect<Equal<First<[undefined]>, undefined>>,
 ]
 
+
+type First<T extends [...any]> = T['length'] extends 0 ? never : T[0]
+
 type errors = [
   // @ts-expect-error
   First<'notArray'>,
