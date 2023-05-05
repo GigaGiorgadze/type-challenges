@@ -10,6 +10,8 @@ type cases = [
   Expect<Equal<1 | 2, MyReturnType<typeof fn1>>>,
 ]
 
+type MyReturnType<T> = T extends (...args: any) => infer B ? B : never
+
 type ComplexObject = {
   a: [12, 'foo']
   bar: 'hello'
