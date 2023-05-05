@@ -8,6 +8,10 @@ type cases = [
 // @ts-expect-error
 type error = MyOmit<Todo, 'description' | 'invalid'>
 
+type MyOmit<T extends Record<string, any>, S extends keyof T> =  {
+  [P in keyof T as P extends S ? never : P]: T[P]
+}
+
 interface Todo {
   title: string
   description: string
