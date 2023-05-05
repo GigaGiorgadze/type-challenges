@@ -7,6 +7,10 @@ type cases = [
   MyPick<Todo, 'title' | 'completed' | 'invalid'>,
 ]
 
+type MyPick<T extends Record<string, any>, K extends keyof T> = {
+  [P in keyof T as P extends K ? P : never]: T[P]
+}
+
 interface Todo {
   title: string
   description: string
